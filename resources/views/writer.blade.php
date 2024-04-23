@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HS BKK Student Portal</title>
+    <title>HS Bangkok Student Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+<body style="background-color: #3c237f;">
+    <div class="relative flex items-top justify-center min-h-screen sm:items-center py-4 sm:pt-0">
         <div class="max-w-6xl w-full mx-auto sm:px-6 lg:px-8 space-y-4 py-4">
-            <div class="text-center text-gray-800 dark:text-gray-300 py-4">
-                <h1 class="text-7xl font-bold">HS BKK Student Portal</h1>
+            <div class="text-center text-white dark:text-gray-300 py-4">
+                <h1 class="text-5xl font-bold">Harbour.Space Bangkok Student Portal</h1>
             </div>
 
             <div class="w-full rounded-md bg-white border-2 border-gray-600 p-4 min-h-[60px] h-full text-gray-600">

@@ -22,7 +22,7 @@ class WriterController extends Controller
             "frequency_penalty" => 0,
             "presence_penalty" => 0,
             'max_tokens' => 600,
-            'prompt' => sprintf('Write article about: %s', $title),
+            'prompt' => sprintf('Answer the question in a concise format. Limit the answer to 5 to 7 sentences only: %s', $title),
         ]);
     
         $content = trim($result['choices'][0]['text']);

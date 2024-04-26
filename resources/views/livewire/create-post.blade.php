@@ -6,7 +6,7 @@
     @endif
 
     <div>
-        <form wire:submit.prevent="save">
+        <form wire:submit.prevent="savePost">
             <div>
                 <label for="title">Title:</label>
                 <input type="text" id="title" wire:model.live="title">

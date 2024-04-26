@@ -2,30 +2,28 @@
 
 namespace App\Livewire;
 
-use Livewire\Attributes\Rule;
 use Livewire\Component;
 use App\Models\Post;
 
 class CreatePost extends Component
 {
-    #[Rule('required', message: 'Please enter a title.')]
-    #[Rule('min:5', message: 'Your title is too short.')]
-    public $title = '';
+    public $title;
+    public $content;
 
-    #[Rule('required', message: 'Please enter content.')]
-    #[Rule('min:5', message: 'Your content is too short.')]
-    public $content = '';
-
-    public function save()
+    public function rules()
     {
-        $this->validate();
+        return [
+            'title' => 'required|min:3|unique:posts,title',
+            'content' => 'required|min:3',
+        ];
+    }
 
-        Post::create([
-            'title' => $this->title,
-            'content' => $this->content,
-        ]);
-
-        return redirect()->to('/posts');
+    public function savePost()
+    {
+        $validated = $this->validate();
+        Post::create($validated);
+        session()->flash('message', 'Post successfully created.');
+        return redirect()->to('/create-post');
     }
 
     public function render()

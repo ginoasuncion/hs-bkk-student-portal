@@ -1,16 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WriterController;
+use App\Livewire\CreatePost;
+Use App\Livewire\ShowPosts;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
 
-Route::get('/writer', function () {
-    $title = '';
-    $content = '';
-    return view('writer', compact('title', 'content'));
-});
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::post('/writer/generate', [WriterController::class, 'index']);
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+Route::get('/create-post', CreatePost::class);
+Route::get('/posts', ShowPosts::class);
+
+require __DIR__.'/auth.php';

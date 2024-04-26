@@ -8,10 +8,13 @@ class CreatePost extends Component {
     public function savePost() 
     
     {
-        Post::create([
-                'title' => $this->title,
-                'content' => $this->content
+
+        $validated = $this->validate([ 
+            'title' => 'required|min:3',
+            'content' => 'required|min:3'
         ]);
+
+        Post::create($validated);
 
         session()->flash('message', 'Post successfully created.');
         return redirect()->to('/create-post'); 

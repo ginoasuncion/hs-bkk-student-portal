@@ -12,31 +12,36 @@ class CreatePost extends Component
 
     public $title;
     public $content;
-    public $photo;
+    public $photos = []; // Changed from $photo to $photos and initialized as an array
 
-    public function savePost()
+    public function save()
     {
         $this->validate([
             'title' => 'required',
             'content' => 'required',
-            'photo' => 'image|max:1024', // 1MB Max
+            'photos.*' => 'image|max:1024',
         ]);
 
-        // Store the file in the storage/app/public/post-photos directory
-        $photoPath = $this->photo->store('post-photos', 'public');
-
-        Post::create([
+        $post = Post::create([
             'title' => $this->title,
             'content' => $this->content,
-            'photo_path' => $photoPath,
         ]);
+
+        foreach ($this->photos as $photo) {
+            $photoPath = $photo->store('post-photos', 'public');
+            $post->photos()->create(['photo_path' => $photoPath]);
+        }
 
         // Reset fields
         $this->title = '';
         $this->content = '';
-        $this->photo = '';
+        $this->photos = [];
 
-        // Update component state or flash message
         session()->flash('message', 'Post created!');
+    }
+
+    public function render()
+    {
+        return view('livewire.create-post');
     }
 }

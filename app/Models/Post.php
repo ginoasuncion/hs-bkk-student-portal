@@ -7,4 +7,9 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'content', 'photo_path']; 
+
+    public function photos()
+    {
+        return $this->hasMany(PostPhoto::class); 
+    }
 }

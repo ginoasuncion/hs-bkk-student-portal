@@ -3,30 +3,38 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Livewire\Attributes\Rule;
+use Livewire\WithFileUploads;
 use App\Models\Post;
 
 class CreatePost extends Component
 {
-    #[Rule('required')]
-    #[Rule('min:5')]
-    public $title;
+    use WithFileUploads;
 
-    #[Rule('required')]
-    #[Rule('min:10')]
+    public $title;
     public $content;
+    public $photo;
 
     public function savePost()
     {
-        $this->validate();
-
-        $post = Post::create([
-            'title' => $this->title,
-            'content' => $this->content,
+        $this->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'photo' => 'image|max:1024', // 1MB Max
         ]);
 
-        // Dispatch the event
-        $this->dispatch('post-created', title: $post->title);
+        // Store the file in the storage/app/public/post-photos directory
+        $photoPath = $this->photo->store('post-photos', 'public');
+
+        Post::create([
+            'title' => $this->title,
+            'content' => $this->content,
+            'photo_path' => $photoPath,
+        ]);
+
+        // Reset fields
+        $this->title = '';
+        $this->content = '';
+        $this->photo = '';
 
         // Update component state or flash message
         session()->flash('message', 'Post created!');

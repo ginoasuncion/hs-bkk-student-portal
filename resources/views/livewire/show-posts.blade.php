@@ -19,7 +19,8 @@
                 <img src="{{ Storage::url($photo->photo_path) }}" alt="{{ $post->title }}" width="300">
             @endforeach
             <button wire:click="edit({{ $post->id }})">Edit</button>
-            <livewire:show-comments :postId="$post->id" :key="$post->id"/>
         </div>
     @endforeach
+
+    {{ $posts->links() }}
 </div>

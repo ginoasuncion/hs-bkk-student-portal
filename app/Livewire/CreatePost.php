@@ -3,31 +3,32 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\Attributes\Rule;
 use App\Models\Post;
 
 class CreatePost extends Component
 {
+    #[Rule('required')]
+    #[Rule('min:5')]
     public $title;
-    public $content;
 
-    public function rules()
-    {
-        return [
-            'title' => 'required|min:3|unique:posts,title',
-            'content' => 'required|min:3',
-        ];
-    }
+    #[Rule('required')]
+    #[Rule('min:10')]
+    public $content;
 
     public function savePost()
     {
-        $validated = $this->validate();
-        Post::create($validated);
-        session()->flash('message', 'Post successfully created.');
-        return redirect()->to('/create-post');
-    }
+        $this->validate();
 
-    public function render()
-    {
-        return view('livewire.create-post');
+        $post = Post::create([
+            'title' => $this->title,
+            'content' => $this->content,
+        ]);
+
+        // Dispatch the event
+        $this->dispatch('post-created', title: $post->title);
+
+        // Update component state or flash message
+        session()->flash('message', 'Post created!');
     }
 }

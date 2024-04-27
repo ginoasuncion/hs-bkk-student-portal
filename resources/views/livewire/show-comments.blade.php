@@ -1,10 +1,9 @@
 <div>
     <h4>Comments</h4>
-
     @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
     @endif
 
     <!-- Add a Comment -->
@@ -16,9 +15,11 @@
 
     <!-- Display Comments -->
     @foreach($comments as $comment)
-        <div>
-            <strong>{{ $comment->author }}</strong>
-            <p>{{ $comment->content }}</p>
-        </div>
+    <div>
+        <strong>{{ $comment->author }}</strong>
+        <p>{{ $comment->content }}</p>
+    </div>
     @endforeach
+
+    {{ $comments->links() }}
 </div>

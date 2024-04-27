@@ -1,4 +1,5 @@
 <div>
+    <input type="text" wire:model.live="search" placeholder="Search posts...">
     <h1>All Posts</h1>
 
     @if (session()->has('message'))

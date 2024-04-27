@@ -10,10 +10,24 @@ class ShowPosts extends Component
 {
     use WithPagination;
 
+    public $search = '';
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        return view('livewire.show-posts', [
-            'posts' => Post::orderBy('created_at', 'desc')->paginate(3),
-        ]);
+        $query = Post::query();
+
+        if ($this->search) {
+            $query->where('title', 'like', '%' . $this->search . '%')
+                  ->orWhere('content', 'like', '%' . $this->search . '%');
+        }
+
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('livewire.show-posts', compact('posts'));
     }
 }

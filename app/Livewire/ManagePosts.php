@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Post;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Models\Comment;
 
 class ManagePosts extends Component
 {

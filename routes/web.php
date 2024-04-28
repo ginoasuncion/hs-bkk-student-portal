@@ -5,6 +5,7 @@ use App\Livewire\CreatePost;
 use App\Livewire\SinglePost;
 use App\Livewire\ManagePosts;
 use App\Livewire\EditPost;
+use App\Livewire\ListPosts;
 
 Route::view('/', 'welcome');
 
@@ -21,6 +22,7 @@ Route::get('/manage-posts', ManagePosts::class)->name('manage.posts');
 Route::get('/post/{postId}', SinglePost::class)->name('single.post');
 Route::get('/post/{postId}/edit', EditPost::class)->name('edit.post');
 // Route::get('/edit-post/{postId}', EditPost::class)->name('edit.post');
+Route::get('/', ListPosts::class)->name('landing.page');
 
 // require __DIR__.'/auth.php';
 

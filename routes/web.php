@@ -17,12 +17,24 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::get('/create-post', CreatePost::class);
-Route::get('/manage-posts', ManagePosts::class)->name('manage.posts'); 
+
+Auth::routes();
+// Backend routes
+Route::middleware(['auth'])->group(function () { 
+    Route::get('/create-post', CreatePost::class);
+    Route::get('/manage-posts', ManagePosts::class)->name('manage.posts'); 
+    Route::get('/post/{postId}', SinglePost::class)->name('single.post');
+    Route::get('/post/{postId}/edit', EditPost::class)->name('edit.post');
+});
+
+// Frontend Routes
+Route::get('/', ListPosts::class)->name('landing.page'); 
 Route::get('/post/{postId}', SinglePost::class)->name('single.post');
-Route::get('/post/{postId}/edit', EditPost::class)->name('edit.post');
+
+
 // Route::get('/edit-post/{postId}', EditPost::class)->name('edit.post');
-Route::get('/', ListPosts::class)->name('landing.page');
+
+// Route::get('/', ListPosts::class)->name('landing.page');
 
 // require __DIR__.'/auth.php';
 

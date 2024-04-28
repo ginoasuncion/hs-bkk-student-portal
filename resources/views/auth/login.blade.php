@@ -4,8 +4,8 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white text-center">{{ __('Login') }}</div>
+            <div class="card shadow" >
+                <div class="card-header text-center" style="background-color: #3c237f; color: white; border-color: #3c237f;">{{ __('Login to your account') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -34,7 +34,7 @@
 
                         <!-- Submit Button -->
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
+                            <button type="submit" class="btn btn-primary" style="background-color: #3c237f; color: white; border-color: #3c237f;">{{ __('Login') }}</button>
                         </div>
 
                         <!-- Forgot Password Link -->

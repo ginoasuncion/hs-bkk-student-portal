@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
+    <title>@yield('title') | HS BKK Student Portal</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -26,7 +27,7 @@
         <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -81,10 +82,12 @@
             @yield('content')
         </main>
     </div>
-        <!-- Footer -->
-        <footer class="sticky-footer mt-auto py-3 bg-dark text-white"> <div class="container">
-        <span>&copy; {{ date('Y') }} Livewire 3 Blog. All rights reserved.</span>
-                </div>
-            </footer>
+        <!-- Footer
+        <footer class="sticky-footer mt-auto py-3" style="background-color: #3c237f; border-color: #3c237f; color: white;">
+        <div class="container">
+            <span>&copy; {{ date('Y') }} Harbour.Space University. All rights reserved.</span>
+        </div>
+        </footer> -->
+
 </body>
 </html>

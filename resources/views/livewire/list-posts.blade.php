@@ -1,8 +1,10 @@
+@section('title', 'View Resources')
+
 <div class="container mt-5">
     <div class="row mb-3">
         <div class="col-md-8">
             <!-- Maybe a site title or logo here -->
-            <h1>Web Dev Posts</h1>
+            <h1>Student Resources</h1>
         </div>
         <div class="col-md-4">
             <div class="input-group">

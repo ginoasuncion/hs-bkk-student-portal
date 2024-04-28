@@ -1,7 +1,7 @@
 .body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 200vh;
 }
 
 .content {
@@ -9,7 +9,7 @@
 }
 
 .navbar {
-    background-color: #001F3F; /* Navy Blue */
+    background-color:#3C2372; /* Navy Blue */
 }
 
 /* Change the color of navbar text to light */
@@ -25,9 +25,9 @@
 
 .sticky-footer {
     background-color: #343a40; /* Dark Gray */
-    position: relative;
+    position: fixed;
     bottom: 0;
-    padding: 10px 0;
+    padding: 1px 0;
     width: 100%;
     text-align: center;
 }
@@ -48,7 +48,7 @@
 
 .modal-content {
     background-color: #fff;
-    padding: 20px;
+    padding: 10px;
     border-radius: 8px;
     width: 80%;
     max-width: 500px;

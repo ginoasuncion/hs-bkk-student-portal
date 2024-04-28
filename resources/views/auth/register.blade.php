@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow">
-                    <div class="card-header bg-primary text-white text-center">{{ __('Register') }}</div>
+                <div class="card-header text-center" style="background-color: #3c237f; color: white; border-color: #3c237f;">{{ __('Register an account') }}</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
@@ -45,7 +45,7 @@
 
                             <!-- Submit Button -->
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">{{ __('Register') }}</button>
+                                <button type="submit" class="btn btn-primary" style="background-color: #3c237f; color: white;">{{ __('Register') }}</button>
                             </div>
                         </form>
                     </div>

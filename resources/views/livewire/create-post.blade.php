@@ -1,3 +1,5 @@
+@section('title', 'Create Article')
+
 <div class="container mt-5">
     @if (session()->has('message'))
         <div class="alert alert-success">

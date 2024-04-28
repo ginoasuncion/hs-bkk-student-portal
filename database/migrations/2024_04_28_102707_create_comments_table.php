@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('author');
             $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('parent_comment_id')->nullable();
             $table->text('content');
             $table->timestamps();
         
-            // Define foreign key constraint
-            $table->foreign('post_id')->references('id')->on('posts');
+            // Foreign keys
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('parent_comment_id')->references('id')->on('comments')->onDelete('cascade');
         });
         
     }

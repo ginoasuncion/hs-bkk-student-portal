@@ -4,4 +4,6 @@
     @foreach($post->photos as $photo)
         <img src="{{ Storage::url($photo->photo_path) }}" alt="{{ $post->title }}" width="300">
     @endforeach
+    <h2>Comments</h2>
+    @livewire('comment-list-component', ['postId' => $post->id])
 </div>

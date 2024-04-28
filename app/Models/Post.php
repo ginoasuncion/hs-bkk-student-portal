@@ -6,7 +6,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'photo_path']; 
+    protected $fillable = ['title', 'content']; 
 
     public function photos()
     {
@@ -17,4 +17,8 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class); 
     }
+
+    public function topLevelComments() {
+        return $this->hasMany(Comment::class)->whereNull('parent_comment_id');
+        }
 }

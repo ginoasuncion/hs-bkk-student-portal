@@ -31,7 +31,7 @@ class ShowComments extends Component
     {
         $comments = Comment::where('post_id', $this->postId)
             ->orderBy('created_at', 'desc')
-            ->paginate(3);
+            ->paginate(2);
 
         return view('livewire.show-comments', ['comments' => $comments]);
     }

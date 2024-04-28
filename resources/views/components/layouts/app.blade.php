@@ -8,7 +8,7 @@
 <body>
     <!-- Content -->
     @livewire('create-post')
-    @livewire('show-posts')
+    @livewire('manage-posts')
     
     @livewireScripts
 </body>

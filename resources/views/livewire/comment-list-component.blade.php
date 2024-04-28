@@ -1,6 +1,7 @@
 <div>
     @if(!auth()->check())
         <div>
+            <?php session(['url.intended' => url()->current()]); ?>
             Want to join the discussion? <a href="{{ route('login') }}">Login</a> or <a href="{{ route('register') }}">Register</a>
         </div>
     @endif

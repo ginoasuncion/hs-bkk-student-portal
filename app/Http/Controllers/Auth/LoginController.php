@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -36,4 +36,18 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function redirectTo()
+    {
+        // If the user was trying to comment (or any other intended URL is set)
+        if (session()->has('url.intended')) {
+            return session('url.intended', '/');
+        }
+
+        // If the user is an admin
+        if (auth()->user()->isAdmin()) {
+            return route('manage.posts'); // Redirect to the manage-posts route
+        }
+    }
+
 }

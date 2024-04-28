@@ -6,6 +6,7 @@ use App\Livewire\SinglePost;
 use App\Livewire\ManagePosts;
 use App\Livewire\EditPost;
 use App\Livewire\ListPosts;
+use App\Livewire\EditComment;
 
 Route::view('/', 'welcome');
 
@@ -34,6 +35,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/manage-posts', ManagePosts::class)->name('manage.posts'); 
     Route::get('/post/{postId}', SinglePost::class)->name('single.post');
     Route::get('/post/{postId}/edit', EditPost::class)->name('edit.post');
+    Route::get('/comment/{commentId}/edit', EditComment::class)->name('edit.comment');
 });
 
 // Frontend Routes

@@ -1,28 +1,25 @@
-<div>
+<div class="container mt-5">
     @if(!auth()->check())
-        <div>
+        <div class="alert alert-info">
             <?php session(['url.intended' => url()->current()]); ?>
             Want to join the discussion? <a href="{{ route('login') }}">Login</a> or <a href="{{ route('register') }}">Register</a>
         </div>
     @endif
 
-    <!-- Display Comments -->
     @foreach($comments as $comment)
-        <div>
-            <p><strong>{{ $comment->user->name }}</strong>: {{ $comment->content }}</p>
-            <!-- Nested CommentComponent for replies -->
+        <div class="mb-3">
+            {{ $comment->content }}
+            <strong>{{ $comment->user->name }}</strong>:
             @livewire('comment-component', ['comment' => $comment], key($comment->id))
         </div>
     @endforeach
 
-    <!-- Comment Input Box -->
     @if(auth()->check())
-        <!-- Only show comment box if user is logged in -->
-        <textarea wire:model="newComment" placeholder="Add a comment..."></textarea>
-        @error('newComment')
-            <span class="error">{{ $message }}</span>
-        @enderror
-        <button wire:click="addComment">Submit</button>
+        <div class="form-group">
+            <textarea wire:model="newComment" class="form-control" rows="3" placeholder="Add a comment..."></textarea>
+            @error('newComment') <span class="text-danger">{{ $message }}</span> @enderror
+        </div>
+        <button wire:click="addComment" class="btn btn-primary">Submit</button>
     @else
         <p>Please <a href="{{ route('login') }}">login</a> to comment.</p>
     @endif

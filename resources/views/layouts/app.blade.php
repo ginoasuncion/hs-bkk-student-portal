@@ -13,12 +13,17 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
+
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font- awesome/5.15.3/css/all.min.css">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -76,5 +81,10 @@
             @yield('content')
         </main>
     </div>
+        <!-- Footer -->
+        <footer class="sticky-footer mt-auto py-3 bg-dark text-white"> <div class="container">
+        <span>&copy; {{ date('Y') }} Livewire 3 Blog. All rights reserved.</span>
+                </div>
+            </footer>
 </body>
 </html>

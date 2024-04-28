@@ -1,4 +1,5 @@
 <div wire:poll.10s>
+    <input type="text" wire:model.live="search" placeholder="Search posts...">
     <!-- Button to create a new post -->
     <a href="{{ route('create.post') }}" class="btn btn-primary mb-3">Create New Post</a>
 

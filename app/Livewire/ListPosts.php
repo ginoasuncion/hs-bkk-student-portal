@@ -9,11 +9,16 @@ use Livewire\Component;
 class ListPosts extends Component
 {
     use WithPagination;
-    
+
+    public $search = '';
+
     public function render()
     {
         return view('livewire.list-posts', [
-            'posts' => Post::orderBy('created_at', 'desc')->paginate(10),
+            'posts' => Post::where('title', 'like', '%' . $this->search . '%')
+                            ->orWhere('content', 'like', '%' . $this->search . '%')
+                            ->orderBy('created_at', 'desc')
+                            ->paginate(10),
         ])->extends('layouts.app');
     }
 }

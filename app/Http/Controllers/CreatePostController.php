@@ -31,7 +31,7 @@ class CreatePostController extends Controller
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $photo) {
                 // Resize the image to a width of 800 and constrain aspect ratio (auto height)
-                $resizedImage = Image::make($photo->getRealPath())->resize(800, null, function ($constraint) {
+                $resizedImage = Image::make($photo->getRealPath())->resize(100, null, function ($constraint) {
                     $constraint->aspectRatio();
                 });
                 $photoPath = $photo->store('post-photos', 'public');

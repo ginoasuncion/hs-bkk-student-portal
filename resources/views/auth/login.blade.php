@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" >
         <div class="col-md-6">
             <div class="card shadow" >
                 <div class="card-header text-center" style="background-color: #3c237f; color: white; border-color: #3c237f;">{{ __('Login to your account') }}</div>

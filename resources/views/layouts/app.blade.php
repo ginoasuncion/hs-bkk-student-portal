@@ -82,12 +82,10 @@
             @yield('content')
         </main>
     </div>
-        <!-- Footer
-        <footer class="sticky-footer mt-auto py-3" style="background-color: #3c237f; border-color: #3c237f; color: white;">
-        <div class="container">
-            <span>&copy; {{ date('Y') }} Harbour.Space University. All rights reserved.</span>
-        </div>
-        </footer> -->
-
+        <footer class="sticky-footer mt-auto py-3">
+            <div class="container">
+                <span>&copy; {{ date('Y') }} <a href="https://harbour.space/" target="_blank" rel="noopener noreferrer" style="color: rgba(0,0,0,0.5);">Harbour.Space University</a>. All rights reserved.</span>
+            </div>
+        </footer>
 </body>
 </html>

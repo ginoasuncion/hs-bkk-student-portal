@@ -28,7 +28,7 @@
                             <img src="{{ Storage::url($post->photos->first()->photo_path) }}" alt="{{ $post->title }}" class="card-img-top">
                         @endif
                         <div class="card-body">
-                            <h5><a href="{{ route('single.post', $post->id) }}">{{ $post->title }}</a></h5>
+                            <h5 style="font-weight: bold;"><a href="{{ route('single.post', $post->id) }}">{{ $post->title }}</a></h5>
                             <p>{{ Str::limit($post->content, 100) }}</p>
                         </div>
                     </div>

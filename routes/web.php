@@ -10,6 +10,8 @@ use App\Livewire\EditComment;
 use App\Http\Controllers\ListPostsController;
 use App\Http\Controllers\ManagePostsController;
 use App\Http\Controllers\CreatePostController;
+use App\Http\Controllers\SinglePostController;
+use App\Http\Controllers\CommentListComponentController;
 
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])
@@ -41,13 +43,20 @@ Route::middleware(['role:admin'])->group(function () {
     Route::delete('/manage-posts/delete-post/{postId}', [ManagePostsController::class, 'deletePost'])->name('manage-posts.delete-post');
     Route::delete('/manage-posts/delete-comment/{commentId}', [ManagePostsController::class, 'deleteComment'])->name('manage-posts.delete-comment');
 
-    Route::get('/post/{postId}', SinglePost::class)->name('single.post');
+    // Route::get('/post/{postId}', SinglePost::class)->name('single.post');
+    Route::get('/posts/{postId}', [SinglePostController::class, 'show'])->name('single.post');
     Route::get('/post/{postId}/edit', EditPost::class)->name('edit.post');
-   
+
+    Route::get('/posts/{postId}/comments', [CommentListComponentController::class, 'index'])->name('comments.index');
+    Route::post('/posts/{postId}/comments', [CommentListComponentController::class, 'store'])->name('comments.store');
+
     Route::get('/comment/{commentId}/edit', EditComment::class)->name('edit.comment');
 });
 
 
+
+
+Route::get('/posts/{postId}', [SinglePostController::class, 'show'])->name('single.post');
 
 
 
@@ -58,7 +67,7 @@ Route::get('/', [ListPostsController::class, 'index'])->name('landing.page');
 // Route::post('/', [ListPostsController::class, 'index'])->name('landing.page.search');
 
 // Route::get('/', ListPosts::class)->name('landing.page'); 
-Route::get('/post/{postId}', SinglePost::class)->name('single.post');
+// Route::get('/post/{postId}', SinglePost::class)->name('single.post');
 
 
 

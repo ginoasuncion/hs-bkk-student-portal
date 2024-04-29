@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
+
 class CreatePostController extends Controller
 {
     public function create()
@@ -19,7 +20,7 @@ class CreatePostController extends Controller
     {
         $request->validate([
             'title' => ['required', Rule::unique('posts', 'title')],
-            'content' => 'required|min:3',
+            'content' => 'required|min:5',
             'photos.*' => 'image|max:1024', // 1MB Max for each image
         ]);
 
@@ -31,13 +32,13 @@ class CreatePostController extends Controller
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $photo) {
                 // Resize the image to a width of 800 and constrain aspect ratio (auto height)
-                $resizedImage = Image::make($photo->getRealPath())->resize(100, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+                // $resizedImage = Image::make($photo->getRealPath())->resize(100, null, function ($constraint) {
+                //     $constraint->aspectRatio();
+                // });
                 $photoPath = $photo->store('post-photos', 'public');
 
                 // Save the resized image to the same path as the original
-                $resizedImage->save(public_path('storage/' . $photoPath));
+                // $resizedImage->save(public_path('storage/' . $photoPath));
 
                 PostPhoto::create([
                     'post_id' => $post->id,

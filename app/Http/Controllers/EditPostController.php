@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\PostPhoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
 
 class EditPostController extends Controller
 {
@@ -26,13 +28,11 @@ class EditPostController extends Controller
         ]);
     }
 
-    
-
     public function update(Request $request, $postId)
     {
         $request->validate([
             'title' => 'required|min:5',
-            'content' => 'required|min:10',
+            'content' => 'required|min:5',
             'photos.*' => 'image|max:1024',
         ]);
 
@@ -49,9 +49,17 @@ class EditPostController extends Controller
 
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $photo) {
+                // Resize the image to a width of 800 and constrain aspect ratio (auto height)
+                // $resizedImage = Image::make($photo->getRealPath())->resize(100, null, function ($constraint) {
+                //     $constraint->aspectRatio();
+                // });
                 $photoPath = $photo->store('post-photos', 'public');
+
+                // Save the resized image to the same path as the original
+                // $resizedImage->save(public_path('storage/' . $photoPath));
+
                 PostPhoto::create([
-                    'post_id' => $postId,
+                    'post_id' => $post->id,
                     'photo_path' => $photoPath,
                 ]);
             }
@@ -62,13 +70,14 @@ class EditPostController extends Controller
 
     public function removePhoto($photoId)
     {
-        $photo = PostPhoto::find($photoId);
+        $photo = PostPhoto::find($photoId); // Find the photo by ID
 
         if ($photo) {
-            Storage::disk('public')->delete($photo->photo_path);
-            $photo->delete();
+            Storage::disk('public')->delete($photo->photo_path); // Delete the photo file
+            $photo->delete(); // Delete the photo record
         }
 
         // Handle redirection or response
+        return back();
     }
 }

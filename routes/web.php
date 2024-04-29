@@ -24,7 +24,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::put('/comments/{comment}', [EditCommentController::class, 'update'])->name('comments.update');
     Route::get('/posts/{postId}/edit', [EditPostController::class, 'edit'])->name('edit.post');
     Route::put('/posts/{postId}', [EditPostController::class, 'update'])->name('update.post');
-    Route::delete('/photos/{photoId}', [EditPostController::class, 'removePhoto'])->name('remove.photo');
+    Route::get('/photos/{photoId}', [EditPostController::class, 'removePhoto'])->name('remove.photo');
 
 
 });

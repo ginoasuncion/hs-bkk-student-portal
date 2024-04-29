@@ -1,8 +1,8 @@
 <div x-data="{ open: false }">
     @foreach($replies as $reply)
         <div style="margin-left: 20px;" class="mb-2">
-            {{ $reply->content }}
             <strong>{{ $reply->user->name }}</strong>:
+            {{ $reply->content }}
             @livewire('comment-component', ['comment' => $reply], key($reply->id))
         </div>
     @endforeach
@@ -13,9 +13,9 @@
                 <textarea wire:model="replyContent" class="form-control" rows="3" placeholder="Write a reply..."></textarea>
                 @error('replyContent') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
-            <button wire:click="postReply({{ $comment->id }})" class="btn btn-primary">Reply</button>
+            <button wire:click="postReply({{ $comment->id }})" class="btn btn-primary" style="background-color: #3c237f; color: white; border-color: #3c237f;">Reply</button>
         @else
-            <button @click="open = true" class="btn btn-primary">Reply</button>
+            <button @click="open = true" class="btn btn-primary" style="background-color: #3c237f; color: white; border-color: #3c237f;">Reply</button>
         @endif
     @endif
 

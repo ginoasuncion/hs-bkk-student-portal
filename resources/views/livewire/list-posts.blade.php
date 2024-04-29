@@ -1,17 +1,22 @@
 @section('title', 'View Resources')
 
 <div class="container mt-5">
-    <div class="row mb-3">
+    <div>
         <div class="col-md-8">
-            <!-- Maybe a site title or logo here -->
-            <h1>Student Resources</h1>
+            <!-- Description of the Student Portal -->
+            <h1>Sawadee! Welcome to HS Bangkok Student Portal!</h1>
+            <p>This portal provides access to various resources for students to enhance their learning experience and navigate life in Bangkok. Users can search for content related to academics, city guides, and more.</p>
         </div>
-        <div class="col-md-4">
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-12">
             <div class="input-group">
                 <input type="text" wire:model.live="search" class="form-control" placeholder="Search posts...">
             </div>
         </div>
     </div>
+
 
     <div class="row">
         @if($posts->count())

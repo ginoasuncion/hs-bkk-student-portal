@@ -10,7 +10,7 @@
         <input type="text" wire:model.live="search" class="form-control" placeholder="Search posts...">
     </div>
     <!-- Button to create a new post -->
-    <a href="{{ route('create.post') }}" class="btn btn-primary mb-3">Create New Post</a>
+    <a href="{{ route('create.post') }}" class="btn btn-primary mb-3" style="background-color: #3c237f; color: white; border-color: #3c237f;">Create New Post</a>
 
     @if($posts->count())
         @foreach($posts as $post)

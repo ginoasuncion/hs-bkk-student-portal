@@ -12,6 +12,7 @@ use App\Http\Controllers\ManagePostsController;
 use App\Http\Controllers\CreatePostController;
 use App\Http\Controllers\SinglePostController;
 use App\Http\Controllers\CommentListComponentController;
+use App\Http\Controllers\EditCommentController;
 
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])
@@ -50,8 +51,14 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/posts/{postId}/comments', [CommentListComponentController::class, 'index'])->name('comments.index');
     Route::post('/posts/{postId}/comments', [CommentListComponentController::class, 'store'])->name('comments.store');
 
-    Route::get('/comment/{commentId}/edit', EditComment::class)->name('edit.comment');
+    // Route::get('/comment/{commentId}/edit', EditComment::class)->name('edit.comment');
+    Route::get('/comments/{comment}/edit', [EditCommentController::class, 'edit'])->name('edit.comment');
+    Route::put('/comments/{comment}', [EditCommentController::class, 'update'])->name('comments.update');
+
 });
+
+
+
 
 
 

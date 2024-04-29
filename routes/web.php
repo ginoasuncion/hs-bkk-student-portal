@@ -9,6 +9,7 @@ use App\Livewire\EditPost;
 use App\Livewire\EditComment;
 use App\Http\Controllers\ListPostsController;
 use App\Http\Controllers\ManagePostsController;
+use App\Http\Controllers\CreatePostController;
 
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])
@@ -31,9 +32,11 @@ Auth::routes();
 
 // Backend routes
 Route::middleware(['role:admin'])->group(function () { 
-    Route::get('/create-post', CreatePost::class)->name('create.post'); 
+    // Route::get('/create-post', CreatePost::class)->name('create.post'); 
     // Route::get('/manage-posts', ManagePosts::class)->name('manage.posts'); 
 
+    Route::get('/create-post', [CreatePostController::class, 'create'])->name('create.post');
+    Route::post('/create-post', [CreatePostController::class, 'store']);
     Route::get('/manage-posts', [ManagePostsController::class, 'index'])->name('manage.posts');
     Route::delete('/manage-posts/delete-post/{postId}', [ManagePostsController::class, 'deletePost'])->name('manage-posts.delete-post');
     Route::delete('/manage-posts/delete-comment/{commentId}', [ManagePostsController::class, 'deleteComment'])->name('manage-posts.delete-comment');
@@ -43,6 +46,10 @@ Route::middleware(['role:admin'])->group(function () {
    
     Route::get('/comment/{commentId}/edit', EditComment::class)->name('edit.comment');
 });
+
+
+
+
 
 // Frontend Routes
 Route::get('/', [ListPostsController::class, 'index'])->name('landing.page');

@@ -29,29 +29,42 @@
         @foreach($posts as $post)
             <div class="card mb-3">
                 <div class="card-body">
-                    <h3 class="card-title">
-                        <a href="{{ route('single.post', $post->id) }}">{{ $post->title }}</a>
-                    </h3>
-                    <p class="card-text">{{ Str::limit($post->content, 100) }}</p>
-                    <a href="{{ route('edit.post', $post->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('manage-posts.delete-post', $post->id) }}" method="POST" class="d-inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
-                    </form>
-                    <h4 class="mt-3">Comments: {{ $post->comments->count() }}</h4>
+                    <div class="row align-items-center">
+                        <div class="col-md-10">
+                            <h3 class="card-title">
+                                <a href="{{ route('single.post', $post->id) }}">{{ $post->title }}</a>
+                            </h3>
+                            <p class="card-text">{{ Str::limit($post->content, 100) }}</p>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <div class="d-inline-block">
+                                <a href="{{ route('edit.post', $post->id) }}" class="btn btn-warning btn-sm mr-10">Edit Post</a>
+                                <form action="{{ route('manage-posts.delete-post', $post->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this post?')">Delete Post</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="mt-3">Comments: {{ $post->comments->count() }}</h5>
+                    <!-- Comments section -->
                     @foreach($post->comments as $comment)
                         <div class="ml-4 mb-2">
                             <p><strong>{{ $comment->user->name }}:</strong> {{ $comment->content }}</p>
                             <!-- Edit and Delete buttons for the comment -->
-                            @if(auth()->user()->isAdmin() || auth()->user()->id == $comment->user_id)
-                                <a href="{{ route('edit.comment', $comment->id) }}" class="btn btn-warning btn-sm">Edit Comment</a>
-                                <form action="{{ route('manage-posts.delete-comment', $comment->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this comment?')">Delete Comment</button>
-                                </form>
-                            @endif
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    @if(auth()->user()->isAdmin() || auth()->user()->id == $comment->user_id)
+                                        <a href="{{ route('edit.comment', $comment->id) }}" class="btn btn-warning btn-sm">Edit Comment</a>
+                                        <form action="{{ route('manage-posts.delete-comment', $comment->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this comment?')">Delete Comment</button>
+                                        </form>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     @endforeach
                 </div>

@@ -13,6 +13,7 @@ use App\Http\Controllers\CreatePostController;
 use App\Http\Controllers\SinglePostController;
 use App\Http\Controllers\CommentListComponentController;
 use App\Http\Controllers\EditCommentController;
+use App\Http\Controllers\EditPostController;
 
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])
@@ -46,7 +47,7 @@ Route::middleware(['role:admin'])->group(function () {
 
     // Route::get('/post/{postId}', SinglePost::class)->name('single.post');
     Route::get('/posts/{postId}', [SinglePostController::class, 'show'])->name('single.post');
-    Route::get('/post/{postId}/edit', EditPost::class)->name('edit.post');
+    // Route::get('/post/{postId}/edit', EditPost::class)->name('edit.post');
 
     Route::get('/posts/{postId}/comments', [CommentListComponentController::class, 'index'])->name('comments.index');
     Route::post('/posts/{postId}/comments', [CommentListComponentController::class, 'store'])->name('comments.store');
@@ -55,9 +56,18 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/comments/{comment}/edit', [EditCommentController::class, 'edit'])->name('edit.comment');
     Route::put('/comments/{comment}', [EditCommentController::class, 'update'])->name('comments.update');
 
+
+    // Define route for displaying the edit form
+    Route::get('/posts/{postId}/edit', [EditPostController::class, 'edit'])->name('edit.post');
+
+    // Define route for updating the post
+    Route::put('/posts/{postId}', [EditPostController::class, 'update'])->name('update.post');
+
+    // Define route for removing a photo
+    Route::delete('/photos/{photoId}', [EditPostController::class, 'removePhoto'])->name('remove.photo');
+
+
 });
-
-
 
 
 

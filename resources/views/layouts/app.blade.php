@@ -17,8 +17,12 @@
     <!--Custom CSS-->
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
 
-    <!--font awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font- awesome/5.15.3/css/all.min.css">
+    <!-- font awesome
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font- awesome/5.15.3/css/all.min.css"> -->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico?v=2" type="image/x-icon" />
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>

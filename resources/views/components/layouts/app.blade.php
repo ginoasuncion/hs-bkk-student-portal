@@ -7,9 +7,9 @@
 </head>
 <body>
     <!-- Content -->
-    @livewire('create-post')
-    @livewire('manage-posts')
+    <!-- @livewire('create-post') -->
+    <!-- @livewire('manage-posts') -->
     
-    @livewireScripts
+    <!-- @livewireScripts -->
 </body>
 </html>

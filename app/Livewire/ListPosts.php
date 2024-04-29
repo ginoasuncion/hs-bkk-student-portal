@@ -6,6 +6,8 @@ use App\Models\Post;
 use Livewire\WithPagination;
 use Livewire\Component;
 
+
+
 class ListPosts extends Component
 {
     use WithPagination;

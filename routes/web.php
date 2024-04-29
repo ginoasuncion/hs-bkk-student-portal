@@ -5,18 +5,17 @@ use App\Livewire\CreatePost;
 use App\Livewire\SinglePost;
 use App\Livewire\ManagePosts;
 use App\Livewire\EditPost;
-use App\Livewire\ListPosts;
+// use App\Livewire\ListPosts;
 use App\Livewire\EditComment;
+use App\Http\Controllers\ListPostsController;
 
-Route::view('/', 'welcome');
+// Route::view('dashboard', 'dashboard')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+// Route::view('profile', 'profile')
+//     ->middleware(['auth'])
+//     ->name('profile');
 
 
 Auth::routes();
@@ -40,7 +39,10 @@ Route::middleware(['role:admin'])->group(function () {
 });
 
 // Frontend Routes
-Route::get('/', ListPosts::class)->name('landing.page'); 
+Route::get('/', [ListPostsController::class, 'index'])->name('landing.page');
+// Route::post('/', [ListPostsController::class, 'index'])->name('landing.page.search');
+
+// Route::get('/', ListPosts::class)->name('landing.page'); 
 Route::get('/post/{postId}', SinglePost::class)->name('single.post');
 
 
@@ -50,8 +52,8 @@ Route::get('/post/{postId}', SinglePost::class)->name('single.post');
 
 // require __DIR__.'/auth.php';
 
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Auth::routes();
 

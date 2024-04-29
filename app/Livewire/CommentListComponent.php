@@ -46,7 +46,7 @@ class CommentListComponent extends Component
     {
         return view('livewire.comment-list-component', [
             // Fetch top-level comments for the post, eager load user relationships, and order by creation date.
-            'comments' => $this->post->topLevelComments()->with('user')->orderBy('created_at', 'desc')->get()
+            'comments' => $this->post->comments()->with('user')->orderBy('created_at', 'desc')->get()
         ])->extends('layouts.app');
     }
 }

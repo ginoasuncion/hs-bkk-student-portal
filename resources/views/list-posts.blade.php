@@ -15,7 +15,8 @@
             <form action="{{ route('landing.page') }}" method="GET">
                 <div class="input-group">
                     <input type="text" name="search" class="form-control" placeholder="Search posts...">
-                    <div class="input-group-append">
+                    <!-- Add some horizontal space -->
+                    <div class="input-group-append" style="margin-left: 10px;">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-<!-- @extends('layouts.app') -->
+@extends('layouts.app')
 
 @section('title', 'View Resources')
 @section('content')
@@ -9,11 +9,17 @@
         <p>This portal provides access to various resources for students to enhance their learning experience and navigate life in Bangkok. Users can search for content related to academics, city guides, and more.</p>
     </div>
 
+    <!-- Search form -->
     <div class="row mb-3">
         <div class="col-md-12">
-            <div class="input-group">
-                <input type="text" wire:model.live="search" class="form-control" placeholder="Search posts...">
-            </div>
+            <form action="{{ route('landing.page') }}" method="GET">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search posts...">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 

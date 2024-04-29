@@ -40,6 +40,8 @@ Route::middleware(['role:admin'])->group(function () {
 
 // Frontend Routes
 Route::get('/', [ListPostsController::class, 'index'])->name('landing.page');
+// Route::get('/posts', [ListPostsController::class, 'index'])->name('posts.index');
+
 // Route::post('/', [ListPostsController::class, 'index'])->name('landing.page.search');
 
 // Route::get('/', ListPosts::class)->name('landing.page'); 

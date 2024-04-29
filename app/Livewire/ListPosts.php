@@ -18,7 +18,7 @@ class ListPosts extends Component
             'posts' => Post::where('title', 'like', '%' . $this->search . '%')
                             ->orWhere('content', 'like', '%' . $this->search . '%')
                             ->orderBy('created_at', 'desc')
-                            ->paginate(10),
+                            ->paginate(9),
         ])->extends('layouts.app');
     }
 }

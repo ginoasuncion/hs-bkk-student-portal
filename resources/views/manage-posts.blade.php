@@ -11,7 +11,7 @@
     @endif
     <div class="row mb-3">
         <div class="col-md-12">
-            <form action="{{ route('manage.posts') }}" method="GET">
+            <form action="{{ route('posts.index') }}" method="GET">
                 <div class="input-group">
                     <input type="text" name="search" class="form-control" placeholder="Search posts...">
                     <!-- Add some horizontal space -->
@@ -23,7 +23,7 @@
         </div>
     </div>
     <!-- Button to create a new post -->
-    <a href="{{ route('create.post') }}" class="btn btn-primary mb-3">Create New Post</a>
+    <a href="{{ route('posts.create') }}" class="btn btn-primary mb-3">Create New Post</a>
 
     @if($posts->count())
         @foreach($posts as $post)
@@ -32,14 +32,14 @@
                     <div class="row align-items-center">
                         <div class="col-md-10">
                             <h3 class="card-title">
-                                <a href="{{ route('single.post', $post->id) }}">{{ $post->title }}</a>
+                                <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
                             </h3>
                             <p class="card-text">{{ Str::limit($post->content, 100) }}</p>
                         </div>
                         <div class="col-md-2 text-right">
                             <div class="d-inline-block">
-                                <a href="{{ route('edit.post', $post->id) }}" class="btn btn-warning btn-sm mr-10">Edit Post</a>
-                                <form action="{{ route('manage-posts.delete-post', $post->id) }}" method="POST" class="d-inline">
+                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning btn-sm mr-10">Edit Post</a>
+                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this post?')">Delete Post</button>

@@ -68,7 +68,7 @@
                         @else
                             @if(Auth::user()->role === 'admin')
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('manage.posts') }}">{{ __('Manage Content') }}</a>
+                                    <a class="nav-link" href="{{ route('posts.manager') }}">{{ __('Manage Content') }}</a>
                                 </li>
                             @endif
 

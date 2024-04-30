@@ -46,7 +46,7 @@ class LoginController extends Controller
 
         // If the user is an admin
         if (auth()->user()->isAdmin()) {
-            return route('manage.posts'); // Redirect to the manage-posts route
+            return route('posts.manager'); // Redirect to the manage-posts route
         }
     }
 

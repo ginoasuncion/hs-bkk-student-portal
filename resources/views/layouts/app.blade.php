@@ -58,12 +58,7 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-<!-- 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('manage.posts') }}">{{ __('Admin') }}</a>
-                                </li>
-                            @endif -->
+
 
                         @else
                             @if(Auth::user()->role === 'admin')

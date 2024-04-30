@@ -10,6 +10,8 @@ use App\Http\Controllers\CommentListComponentController;
 use App\Http\Controllers\EditCommentController;
 use App\Http\Controllers\EditPostController;
 
+use App\Http\Controllers\PostController;
+
 Auth::routes();
 Route::middleware(['role:admin'])->group(function () { 
     Route::get('/create-post', [CreatePostController::class, 'create'])->name('create.post');
@@ -29,5 +31,8 @@ Route::middleware(['role:admin'])->group(function () {
 
 });
 
-Route::get('/posts/{postId}', [SinglePostController::class, 'show'])->name('single.post');
-Route::get('/', [ListPostsController::class, 'index'])->name('landing.page');
+// Route::get('/posts/{postId}', [SinglePostController::class, 'show'])->name('single.post');
+
+// Route::get('/', [ListPostsController::class, 'index'])->name('landing.page');
+Route::get('/', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{postId}', [PostController::class, 'show'])->name('posts.show');

@@ -28,16 +28,18 @@
         @if($posts->count())
             @foreach($posts as $post)
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <!-- Display the first image of the post -->
-                        @if($post->photos->first())
-                            <img src="{{ Storage::url($post->photos->first()->photo_path) }}" alt="{{ $post->title }}" class="card-img-top">
-                        @endif
-                        <div class="card-body">
-                            <h5 style="font-weight: bold;"><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></h5>
-                            <p>{{ Str::limit($post->content, 100) }}</p>
+                    <a href="{{ route('posts.show', $post->id) }}" class="card-link">
+                        <div class="card h-100 card-hover">
+                            <!-- Display the first image of the post -->
+                            @if($post->photos->first())
+                                <img src="{{ Storage::url($post->photos->first()->photo_path) }}" alt="{{ $post->title }}" class="card-img-top">
+                            @endif
+                            <div class="card-body">
+                                <h5 style="font-weight: bold;">{{ $post->title }}</h5>
+                                <p>{{ Str::limit($post->content, 100) }}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         @else

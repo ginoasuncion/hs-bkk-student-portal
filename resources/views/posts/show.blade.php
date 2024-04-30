@@ -25,7 +25,7 @@
             <hr class="my-5">
 
             <!-- Comments Section -->
-            @include('comment-list-component', ['comments' => $post->comments, 'post' => $post])
+            @include('comments.index', ['comments' => $post->comments, 'post' => $post])
         </div>
     </div>
 </div>

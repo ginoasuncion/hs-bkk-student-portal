@@ -63,7 +63,7 @@ class PostController extends Controller
             }
         }
 
-        return redirect()->route('posts.create')->with('message', 'Post created!');
+        return redirect()->route('posts.manager');
     }
 
     public function edit($postId)

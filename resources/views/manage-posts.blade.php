@@ -56,8 +56,8 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
                                     @if(auth()->user()->isAdmin() || auth()->user()->id == $comment->user_id)
-                                        <a href="{{ route('edit.comment', $comment->id) }}" class="btn btn-warning btn-sm">Edit Comment</a>
-                                        <form action="{{ route('manage-posts.delete-comment', $comment->id) }}" method="POST" class="d-inline">
+                                        <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-warning btn-sm">Edit Comment</a>
+                                        <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this comment?')">Delete Comment</button>

@@ -19,28 +19,4 @@ class ManagePostsController extends Controller
 
         return view('manage-posts', compact('posts', 'search'));
     }
-
-    public function deletePost($postId)
-    {
-        $post = Post::find($postId);
-        $post->delete();
-        session()->flash('message', 'Post deleted successfully.');
-        
-        return redirect()->back();
-    }
-
-    public function deleteComment($commentId)
-    {
-        $comment = Comment::find($commentId);
-
-        // Ensure that only the admin or the comment owner can delete the comment
-        if (auth()->user()->isAdmin() || auth()->user()->id == $comment->user_id) {
-            $comment->delete();
-            session()->flash('message', 'Comment deleted successfully.');
-        } else {
-            session()->flash('error', 'Unauthorized action.');
-        }
-
-        return redirect()->back();
-    }
 }

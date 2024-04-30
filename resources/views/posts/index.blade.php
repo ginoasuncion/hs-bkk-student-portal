@@ -3,26 +3,25 @@
 @section('title', 'View Resources')
 @section('content')
 <div class="container mt-5">
-    <div class="col-md-8">
+    <div class="col-md-10">
         <!-- Description of the Student Portal -->
-        <h1>Sawadee! Welcome to HS Bangkok Student Portal!</h1>
+        <h1>Sawasdee! 🇹🇭 Welcome to HS Bangkok Student Portal!</h1>
         <p>This portal provides access to various resources for students to enhance their learning experience and navigate life in Bangkok. Users can search for content related to academics, city guides, and more.</p>
     </div>
 
-    <!-- Search form -->
-    <div class="row mb-3">
+        <div class="row mb-3 justify-content-end">
         <div class="col-md-12">
             <form action="{{ route('posts.index') }}" method="GET">
-                <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Search posts...">
-                    <!-- Add some horizontal space -->
+                <div class="input-group search-bar">
+                    <input type="text" name="search" class="form-control rounded-pill search-input" placeholder="Search posts...">
                     <div class="input-group-append" style="margin-left: 10px;">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-primary rounded-pill px-4">Search</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+
 
     <div class="row">
         @if($posts->count())

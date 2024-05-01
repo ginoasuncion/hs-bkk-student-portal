@@ -32,7 +32,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-10">
                             <h3 class="card-title">
-                                <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
+                                <a href="{{ route('public-posts.show', $post->id) }}">{{ $post->title }}</a>
                             </h3>
                             <p class="card-text">{{ Str::limit($post->content, 100) }}</p>
                         </div>

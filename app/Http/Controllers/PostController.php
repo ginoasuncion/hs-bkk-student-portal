@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-    public function index(Request $request): View
+
+    public function index(Request $request)
     {
         $search = $request->input('search', '');
 
@@ -20,7 +21,7 @@ class PostController extends Controller
                      ->orderBy('created_at', 'desc')
                      ->paginate(9);
 
-        return view('posts.index', compact('posts', 'search'));
+        return view('manage-posts', compact('posts', 'search'));
     }
 
     public function show($postId)
@@ -63,7 +64,7 @@ class PostController extends Controller
             }
         }
 
-        return redirect()->route('posts.manager');
+        return redirect()->route('posts.index');
     }
 
     public function edit($postId)
@@ -113,7 +114,7 @@ class PostController extends Controller
             }
         }
 
-        return redirect()->route('posts.show', $postId);
+        return redirect()->route('posts.index', $postId);
     }
 
     public function destroy($postId)

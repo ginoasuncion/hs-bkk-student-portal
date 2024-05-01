@@ -10,7 +10,7 @@
         </div>
     @endif
 
-    <form action="{{ route('posts.create') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">

@@ -25,6 +25,8 @@
             <hr class="my-5">
 
             <!-- Comments Section -->
+            <h4 class="mt-3">Comments:</h4>
+            <br>
             @include('comments.index', ['comments' => $post->comments, 'post' => $post])
         </div>
     </div>

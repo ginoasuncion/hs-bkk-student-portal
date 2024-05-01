@@ -21,7 +21,6 @@ Route::middleware('auth')->group(function () {
 // Admin routes
 Route::middleware(['role:admin'])->group(function () { 
     Route::resource('admin/posts', PostController::class)->except(['show']);
-    Route::get('/photos/{photoId}', [PhotoController::class, 'destroy'])->name('photos.destroy');
     Route::resource('admin/comments', CommentController::class)->only(['edit', 'update', 'destroy']);
+    Route::get('admin/photos/{photoId}', [PhotoController::class, 'destroy'])->name('photos.destroy');
 });
-

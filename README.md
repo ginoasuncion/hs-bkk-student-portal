@@ -41,7 +41,7 @@ Follow these steps to set up the development environment for the project:
 10. **Start the Development Server**: Start the Laravel development server to view the application in your web browser:
  ```php artisan serve```
 
-1`. **Access the Application**: Open your web browser and navigate to the URL provided by the Laravel development server to access the application.
+11. **Access the Application**: Open your web browser and navigate to the URL provided by the Laravel development server to access the application.
 
 
 ## Contributing

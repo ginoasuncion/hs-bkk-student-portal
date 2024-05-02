@@ -15,39 +15,52 @@ Follow these steps to set up the development environment for the project:
 1. **Create Project Directory**: Create a directory for the project on your local machine.
 
 2. **Clone the Repository**: Clone the project repository into the directory you created:
-```git clone <repository_url>```
+```
+git clone https://github.com/ginoasuncion/hs-bkk-student-portal
+```
 
-3. **Install Dependencies**: Navigate into the project directory and install Composer dependencies:
-```composer install```
+4. **Install Dependencies**: Navigate into the project directory and install Composer dependencies:
+```
+composer install
+```
 
-4. **Create Configuration File**: Duplicate the `.env.example` file and rename it to `.env`:
-```cp .env.example .env```
+6. **Create Configuration File**: Duplicate the `.env.example` file and rename it to `.env`:
+```
+cp .env.example .env
+```
 
-5. **Generate Application Key**: Generate an application key by running the following command:
-```php artisan key:generate```
+8. **Generate Application Key**: Generate an application key by running the following command:
+```
+php artisan key:generate
+```
 
-6. **Migrate Database Tables**: Run database migrations to create necessary tables:
-```php artisan migrate```
+10. **Migrate Database Tables**: Run database migrations to create necessary tables:
+```
+php artisan migrate
+```
 
-7. **Create Synthetic Data**: Use Laravel's tinker tool to generate and insert fake posts into the database:
-```php artisan tinker``` and then ```\App\Models\Post::factory(50)->create();```
+12. **Create Synthetic Data**: Use Laravel's tinker tool to generate and insert fake posts into the database:
+```
+php artisan tinker
+```
+```
+\App\Models\Post::factory(50)->create();
+```
 
-8. **Install Node.js Dependencies**: Install Node.js dependencies by running the following command:
+14. **Install Node.js Dependencies**: Install Node.js dependencies by running the following command:
 ```npm install```
 
-9. **Run npm run dev**: Run the following command in your terminal and refresh the page:
+15. **Run npm run dev**: Run the following command in your terminal:
  ```npm run dev```
 
-10. **Start the Development Server**: Start the Laravel development server to view the application in your web browser:
- ```php artisan serve```
+16. **Start the Development Server**: Start the Laravel development server in terminal to view the application in your web browser:
+ ```
+php artisan serve
+```
 
-11. **Access the Application**: Open your web browser and navigate to the URL provided by the Laravel development server to access the application.
+18. **Access the Application**: Open your web browser and navigate to the URL provided by the Laravel development server to access the application.
 
 
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

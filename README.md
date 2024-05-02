@@ -2,6 +2,8 @@
 
 Harbour Space Bangkok Student Portal is a web application developed as a school project for the "Introduction to Web Development" course using Laravel framework in Harbour Space University. The project idea is to develop a web application that will serve as a student portal for Harbour Space students in Bangkok to support their learning and life in Thailand. The platform will offer a diverse array of resources to aid students in their onboarding and overall student experience.
 
+<img width="1440" alt="Screenshot 2024-05-02 at 4 04 46 PM" src="https://github.com/ginoasuncion/hs-bkk-student-portal/assets/13530187/f7e79b9b-43ed-46bd-9b5c-75b2c6164c47">
+
 ## Application Features
 
 1. Allowing users to search for posts based on keywords.

@@ -10,6 +10,32 @@ Harbour Space Bangkok Student Portal is a web application developed as a school 
 2. Permitting registered users to create comments on posts.
 3. Providing admin users with additional capabilities for managing posts and comments, such as creating, editing, and deleting comments.
 
+## Requirements
+
+### PHP Dependencies
+
+- PHP: ^8.2
+- intervention/image: *
+- laravel/breeze: ^2.0
+- laravel/framework: ^11.0
+- laravel/tinker: ^2.9
+- laravel/ui: ^4.5
+- livewire/livewire: ^3.4
+- livewire/volt: ^1.0
+
+### JavaScript Dependencies
+
+- @popperjs/core: ^2.11.6
+- @tailwindcss/forms: ^0.5.2
+- autoprefixer: ^10.4.2
+- axios: ^1.6.4
+- bootstrap**: ^5.2.3
+- laravel-vite-plugin: ^1.0
+- postcss: ^8.4.31
+- sass: ^1.56.1
+- tailwindcss: ^3.4.3
+- vite: ^5.0
+
 ## Development Installation Guide
 
 Follow these steps to set up the development environment for the project:
